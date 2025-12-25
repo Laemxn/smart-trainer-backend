@@ -1,4 +1,6 @@
-const API_BASE = "http://127.0.0.1:8000/api";
+import { API_BASE_URL } from "./config.js";
+
+const API_BASE = `${API_BASE_URL}/api`;
 
 document.addEventListener("DOMContentLoaded", () => {
   const hamburgerMenu = document.querySelector(".hamburger-menu");

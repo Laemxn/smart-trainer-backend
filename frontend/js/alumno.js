@@ -1,5 +1,7 @@
 // ../js/alumno.js
-const API = "http://127.0.0.1:8000";
+import { API_BASE_URL } from "./config.js";
+
+const API = API_BASE_URL;
 
 function getAccess() {
   return localStorage.getItem("access");
