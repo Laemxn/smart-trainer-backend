@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Trainer - Alumno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/alumno.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon">ST</div>
+        <div class="logo-text">Smart<span>Trainer</span></div>
+      </div>
+      <div class="hamburger-menu" aria-label="Abrir menu" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="#" data-go="perfil"><i class="fas fa-user"></i> Perfil</a></li>
+          <li><a href="#" data-go="rutina"><i class="fas fa-dumbbell"></i> Rutina</a></li>
+          <li><a href="#" data-go="dieta"><i class="fas fa-utensils"></i> Dieta</a></li>
+          <li><a href="#" data-go="progreso"><i class="fas fa-chart-line"></i> Progreso</a></li>
+          <li><a href="/frontend/catalogo.html"><i class="fas fa-play-circle"></i> Catalogo</a></li>
+          <li><a href="/frontend/comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+          <li><a href="#" data-logout><i class="fas fa-right-from-bracket"></i> Cerrar sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-small">
+      <h1>Panel del alumno <span>Smart Trainer</span></h1>
+      <p>Revisa tu avance, rutinas y dieta activa desde un solo lugar.</p>
+      <a class="cta-button" href="#" data-go="rutina"><i class="fas fa-dumbbell"></i> Ver rutina</a>
+    </section>
+
+    <section class="content-section" data-view="perfil">
+      <h2 class="section-title">Perfil</h2>
+      <div class="panel">
+        <pre id="status" class="data-block">Cargando perfil...</pre>
+        <div class="plan-tips">
+          <h4>Tips rapidos</h4>
+          <ul>
+            <li>Calienta 5-10 min antes de la rutina y estira al final.</li>
+            <li>Prioriza buena tecnica; sube peso solo si mantienes control.</li>
+            <li>Hidrata: 2-3 L al dia y una botella a mano durante la sesion.</li>
+            <li>Dietas: respeta porciones y prepara con antelacion lo del dia.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" data-view="rutina">
+      <h2 class="section-title">Rutina activa</h2>
+      <div class="panel">
+        <div class="panel-actions">
+          <button type="button" id="downloadRoutine" class="download-btn"><i class="fas fa-file-arrow-down"></i> Descargar PDF</button>
+        </div>
+        <div id="routine" class="plan-view">Cargando rutina...</div>
+      </div>
+    </section>
+
+    <section class="content-section" data-view="dieta">
+      <h2 class="section-title">Dieta activa</h2>
+      <div class="panel">
+        <div class="panel-actions">
+          <button type="button" id="downloadDiet" class="download-btn"><i class="fas fa-file-arrow-down"></i> Descargar PDF</button>
+        </div>
+        <div id="diet" class="plan-view">Cargando dieta...</div>
+      </div>
+    </section>
+
+    <section class="content-section" data-view="progreso">
+      <h2 class="section-title">Progreso</h2>
+      <div class="panel">
+        <p class="status-text">Seccion en construccion.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">Smart<span>Trainer</span></div>
+      <p class="footer-text">Mantente enfocado en tu plan y revisa tu progreso cada semana.</p>
+      <p class="copyright">© 2025 Smart Trainer.</p>
+    </div>
+  </footer>
+
+  <script src="../js/alumno.js"></script>
+</body>
+</html>

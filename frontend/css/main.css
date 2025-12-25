@@ -1,0 +1,39 @@
+/* TABS */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  background: #151a21;
+  border-bottom: 1px solid #222;
+}
+
+.tabs .tab {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tabs .tab.active {
+  color: #fc4c02;
+  border-bottom: 2px solid #fc4c02;
+}
+
+/* CARD ÚNICA */
+.card {
+  background: #151a21;
+  border: 1px solid #222;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+/* CONTENIDO POR TAB */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Alumno Dashboard</title>
+</head>
+<body>
+
+<h2>Alumno</h2>
+
+<button id="load">Cargar datos</button>
+
+<pre id="output"></pre>
+
+<script>
+const API_BASE = "http://127.0.0.1:8000/api";
+const token = localStorage.getItem("access_token"); // ya lo guardaste en login
+
+const output = document.getElementById("output");
+
+async function apiGet(url) {
+  const res = await fetch(url, {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  });
+
+  if (!res.ok) {
+    throw new Error("Error " + res.status);
+  }
+
+  return res.json();
+}
+
+document.getElementById("load").onclick = async () => {
+  try {
+    const me = await apiGet(`${API_BASE}/students/me/`);
+    const workout = await apiGet(`${API_BASE}/plans/workouts/me/`);
+    const diet = await apiGet(`${API_BASE}/plans/diets/me/`);
+
+    output.textContent = JSON.stringify(
+      { me, workout, diet },
+      null,
+      2
+    );
+  } catch (e) {
+    output.textContent = "ERROR: " + e.message;
+  }
+};
+</script>
+
+</body>
+</html>

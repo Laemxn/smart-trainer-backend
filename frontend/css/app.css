@@ -1,0 +1,222 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* FONDO EXTERIOR (MARCO) */
+body {
+  background: #05060A;
+  color: #fff;
+}
+
+.app-frame {
+  min-height: 100vh;
+  padding: 10vh 6vw; /* ~20% visual */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.app-shell {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  min-height: 80vh;
+  background: #0A0B0F;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px #1C1E2A,
+    0 30px 80px rgba(0,0,0,.8);
+}
+
+/* PARTÍCULAS */
+.particles {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(124,92,255,.12) 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(124,92,255,.08) 1px, transparent 1px);
+  background-size: 140px 140px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* HEADER / MARCA */
+.brand-header {
+  position: relative;
+  z-index: 2;
+  padding: 24px 20px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-btn {
+  position: absolute;
+  left: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.brand-logo {
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.brand-logo span {
+  display: block;
+  font-size: .65rem;
+  color: #8E93A8;
+}
+
+.brand-logo strong {
+  font-size: 1.2rem;
+  color: #7C5CFF;
+}
+
+/* MENU LATERAL */
+.side-menu {
+  position: absolute;
+  top: 0;
+  left: -240px;
+  width: 220px;
+  height: 100%;
+  background: #12131A;
+  padding: 30px 20px;
+  z-index: 3;
+  transition: left 0.25s ease;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+}
+
+.side-menu li {
+  padding: 14px 0;
+  color: #8E93A8;
+  font-size: .95rem;
+}
+
+.side-menu li.danger {
+  color: #FF5A5A;
+}
+
+/* CONTENIDO */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+.block {
+  margin-bottom: 26px;
+}
+
+.block h2 {
+  font-size: .75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8E93A8;
+  margin-bottom: 8px;
+}
+
+/* CARDS */
+.card {
+  background: #1A1C26;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 0 20px rgba(124,92,255,.18);
+}
+
+pre {
+  white-space: pre-wrap;
+  color: #E4E6EB;
+}
+
+/* HEADER */
+.brand-header {
+  position: relative;
+  z-index: 2;
+  padding: 24px 20px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-btn {
+  position: absolute;
+  left: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+/* MARCO SOLO PARA EL LOGO */
+.logo-frame {
+  padding: 22px 28px;
+  border-radius: 22px;
+  background: #0A0B0F;
+  box-shadow:
+    0 0 0 1px #1C1E2A,
+    0 0 40px rgba(124,92,255,.35);
+}
+
+/* LOGO GRANDE */
+.brand-logo {
+  text-align: center;
+  letter-spacing: 4px;
+}
+
+.brand-logo span {
+  display: block;
+  font-size: .7rem;
+  color: #8E93A8;
+}
+
+.brand-logo strong {
+  display: block;
+  font-size: 1.6rem; /* 👈 LOGO GRANDE */
+  color: #7C5CFF;
+}
+
+/* ===== Transición suave entre vistas ===== */
+[data-view] {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+[data-view].active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Estado vacío elegante ===== */
+.empty-state {
+  text-align: center;
+  padding: 24px 16px;
+  opacity: 0.75;
+}
+
+.empty-state strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+

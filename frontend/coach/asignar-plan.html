@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Trainer - Asignar plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/coach.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon">ST</div>
+        <div class="logo-text">Smart<span>Trainer</span></div>
+      </div>
+      <div class="hamburger-menu" aria-label="Abrir menu" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="./dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+          <li><a href="./crear-alumno.html"><i class="fas fa-user-plus"></i> Crear alumno</a></li>
+          <li><a href="./alumnos.html"><i class="fas fa-users"></i> Alumnos</a></li>
+          <li><a href="./editar-alumno.html"><i class="fas fa-pen"></i> Editar alumno</a></li>
+          <li><a href="./asignar-plan.html"><i class="fas fa-dumbbell"></i> Asignar plan</a></li>
+          <li><a href="#" data-logout><i class="fas fa-right-from-bracket"></i> Cerrar sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-small">
+      <h1>Asignar plan <span>Smart Trainer</span></h1>
+      <p>Activa semanas, carga rutinas y dietas en un flujo directo.</p>
+      <a class="cta-button" href="./alumnos.html"><i class="fas fa-users"></i> Volver a alumnos</a>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Configuracion del plan</h2>
+      <div class="panel">
+        <p id="studentName" class="status-text"></p>
+        <p id="status" class="status-text">Selecciona un alumno desde "Alumnos".</p>
+
+        <h3>Crear semana activa</h3>
+        <form id="weekForm">
+          <div>
+            <label>Fecha inicio</label><br />
+            <input type="date" name="start_date" required />
+          </div>
+
+          <div>
+            <label>Fecha fin</label><br />
+            <input type="date" name="end_date" required />
+          </div>
+
+          <button type="submit" class="cta-button"><i class="fas fa-calendar-plus"></i> Crear semana</button>
+        </form>
+        <p id="weekResult" class="status-text"></p>
+
+        <h3>Asignar rutina</h3>
+        <form id="workoutForm">
+          <div class="form-inline">
+            <div>
+              <label>Week ID</label><br />
+              <input type="number" id="workout_week_id" name="week_id" required />
+            </div>
+            <div class="plan-actions">
+              <div class="ai-hints">
+                <label>Enfoque</label>
+                <select id="aiFocus">
+                  <option value="">Equilibrado</option>
+                  <option value="pecho">Pecho</option>
+                  <option value="espalda">Espalda</option>
+                  <option value="piernas">Piernas</option>
+                  <option value="hombro">Hombro</option>
+                  <option value="biceps">Biceps</option>
+                  <option value="triceps">Triceps</option>
+                  <option value="core">Core</option>
+                  <option value="cardio">Cardio</option>
+                </select>
+              </div>
+              <div class="ai-hints">
+                <label>Dias</label>
+                <select id="aiDays">
+                  <option value="">6</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+            </div>
+            <div class="plan-actions">
+              <button type="button" id="workoutAiBtn" class="cta-button">
+                <i class="fas fa-wand-magic-sparkles"></i> Generar rutina con IA
+              </button>
+              <button type="button" id="addDayBtn" class="secondary-btn">
+                <i class="fas fa-plus"></i> Agregar dia
+              </button>
+            </div>
+          </div>
+
+          <p id="workoutAiStatus" class="status-text"></p>
+
+          <div class="ai-notes">
+            <label for="aiNotes">Notas para la IA (opcional)</label>
+            <input id="aiNotes" type="text" placeholder="Ej. Push/Pull/Legs, priorizar fuerza, evitar saltos" />
+          </div>
+
+          <div id="planBuilder" class="plan-builder">
+            <div class="plan-helper">
+              Edita la rutina antes de guardarla. Usa ejercicios del catalogo y ajusta series y repeticiones.
+            </div>
+            <div id="workoutPlanContainer" class="plan-days"></div>
+          </div>
+
+          <p id="workoutResult" class="status-text"></p>
+          <button type="submit" class="cta-button"><i class="fas fa-dumbbell"></i> Guardar rutina</button>
+        </form>
+
+        <h3>Asignar dieta</h3>
+        <form id="dietForm">
+          <div>
+            <label>Week ID</label><br />
+            <input type="number" id="diet_week_id" name="week_id" required />
+          </div>
+          <div class="form-inline">
+            <div class="ai-hints">
+              <label>Preferencias / restricciones</label>
+              <input id="dietNotes" type="text" placeholder="Ej. sin lactosa, sin mariscos, vegetariano" />
+            </div>
+            <div class="ai-hints">
+              <label>Calorías/día (opcional)</label>
+              <input id="dietCalories" type="number" min="1200" step="50" placeholder="Ej. 2200" />
+            </div>
+          </div>
+
+          <div>
+            <label>Contenido</label><br />
+            <textarea name="content" rows="6" required></textarea>
+          </div>
+
+          <button type="submit" class="cta-button"><i class="fas fa-utensils"></i> Guardar dieta</button>
+        </form>
+        <p id="dietResult" class="status-text"></p>
+        <button type="button" id="dietAiBtn" class="cta-button">
+          <i class="fas fa-wand-magic-sparkles"></i> Generar dieta con IA
+        </button>
+        <p id="dietAiStatus" class="status-text"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">Smart<span>Trainer</span></div>
+      <p class="footer-text">Planes claros y listos para ejecutar.</p>
+      <p class="copyright">(c) 2025 Smart Trainer.</p>
+    </div>
+  </footer>
+
+  <script src="../js/coach-ui.js"></script>
+  <script src="../js/coach-asignar-plan.js"></script>
+</body>
+</html>

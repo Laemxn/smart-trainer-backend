@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo de Videos - Smart Trainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="./css/catalogo.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon">ST</div>
+        <div class="logo-text">Smart<span>Trainer</span></div>
+      </div>
+      <div class="hamburger-menu" id="menuToggle" aria-label="Abrir menú" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="nav-menu" id="navMenu">
+        <ul id="navList"></ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Recursos visuales</p>
+        <h1>Biblioteca de <span>videos guiados</span></h1>
+        <p class="lead">
+          Selección curada de ejercicios en video creada y administrada por ROOT. Disponible para todos los alumnos y visitantes,
+          sin importar si tienen sesión iniciada.
+        </p>
+        <div class="hero-tags">
+          <span><i class="fas fa-unlock"></i> Acceso libre</span>
+          <span id="adminBadge" class="hidden"><i class="fas fa-shield-alt"></i> Panel ROOT</span>
+          <span><i class="fas fa-dumbbell"></i> Entrenamientos guiados</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <span class="pill pill-green">Nuevo</span>
+            <span class="pill pill-dark">Video</span>
+          </div>
+          <h3>Full Body Express</h3>
+          <p>Rutina de 20 minutos para activar todo el cuerpo sin equipo adicional.</p>
+          <div class="hero-meta">
+            <span><i class="fas fa-signal"></i> Beginner</span>
+            <span><i class="fas fa-clock"></i> 20 min</span>
+            <span><i class="fas fa-fire"></i> Cardio + Fuerza</span>
+          </div>
+        </div>
+        <div class="hero-orb"></div>
+      </div>
+    </section>
+
+    <section class="assigned-section hidden" id="assignedSection">
+      <div class="assigned-header">
+        <div>
+          <p class="eyebrow">Mis ejercicios</p>
+          <h2>Videos asignados por tu coach</h2>
+          <p class="muted">Revisa los videos de los ejercicios que tienes en tu rutina activa.</p>
+        </div>
+        <div class="pill pill-dark">Rutina activa</div>
+      </div>
+      <div class="assigned-search">
+        <label for="assignedSearch"><i class="fas fa-search"></i> Buscar</label>
+        <input id="assignedSearch" type="text" placeholder="Filtrar por títu lo o músculo" />
+      </div>
+      <div id="assignedEmpty" class="empty-state hidden">
+        <div class="empty-icon"><i class="fas fa-video-slash"></i></div>
+        <p>No tienes ejercicios asignados o no hay videos asociados.</p>
+      </div>
+      <div id="assignedGrid" class="videos-grid assigned-grid"></div>
+    </section>
+
+    <section class="filters-section">
+      <div class="filters-panel">
+        <div class="filter-group search-group">
+          <label for="filterSearch"><i class="fas fa-search"></i></label>
+          <input id="filterSearch" type="text" placeholder="Buscar por título o palabras clave" />
+        </div>
+        <div class="filter-group">
+          <label for="filterMuscle">Grupo muscular</label>
+          <select id="filterMuscle">
+            <option value="">Todos</option>
+            <option value="full body">Full body</option>
+            <option value="pecho">Pecho</option>
+            <option value="espalda">Espalda</option>
+            <option value="piernas">Piernas</option>
+            <option value="hombros">Hombros</option>
+            <option value="core">Core</option>
+            <option value="cardio">Cardio</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filterLevel">Nivel</label>
+          <select id="filterLevel">
+            <option value="">Todos</option>
+            <option value="BEGINNER">Beginner</option>
+            <option value="INTERMEDIATE">Intermediate</option>
+            <option value="ADVANCED">Advanced</option>
+          </select>
+        </div>
+        <button id="refreshBtn" class="ghost-btn"><i class="fas fa-rotate"></i> Actualizar</button>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-label">Videos publicados</p>
+          <p class="stat-value" id="statTotal">0</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Principiante</p>
+          <p class="stat-value" id="statBeginner">0</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Intermedio</p>
+          <p class="stat-value" id="statIntermediate">0</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Avanzado</p>
+          <p class="stat-value" id="statAdvanced">0</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog-section">
+      <div id="videosLoading" class="loading-state">Cargando videos...</div>
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon"><i class="fas fa-video-slash"></i></div>
+        <p>No hay videos publicados aún. Cuando ROOT cargue material, aparecerá aquí.</p>
+      </div>
+      <div id="videosGrid" class="videos-grid"></div>
+    </section>
+
+    <section id="adminPanel" class="admin-panel hidden">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Panel ROOT</p>
+          <h2>Agregar nuevo video</h2>
+          <p class="muted">Solo el usuario ROOT puede crear y administrar estos recursos.</p>
+        </div>
+        <div class="panel-badge"><i class="fas fa-lock"></i> Acceso restringido</div>
+      </div>
+      <form id="createVideoForm" class="form-grid">
+        <div class="field">
+          <label for="videoTitle">Título</label>
+          <input id="videoTitle" name="title" type="text" placeholder="Ej. Sentadilla guiada para principiantes" required />
+        </div>
+        <div class="field">
+          <label for="videoUrl">URL del video</label>
+          <input id="videoUrl" name="video_url" type="url" placeholder="https://youtube.com/..." required />
+        </div>
+        <div class="field">
+          <label for="videoMuscle">Grupo muscular</label>
+          <input id="videoMuscle" name="muscle_group" type="text" placeholder="Ej. Piernas, Full body" />
+        </div>
+        <div class="field">
+          <label for="videoLevel">Nivel</label>
+          <select id="videoLevel" name="level">
+            <option value="BEGINNER">Beginner</option>
+            <option value="INTERMEDIATE">Intermediate</option>
+            <option value="ADVANCED">Advanced</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="videoDuration">Duración (segundos)</label>
+          <input id="videoDuration" name="duration_seconds" type="number" min="0" placeholder="Ej. 900" />
+        </div>
+        <div class="field">
+          <label for="videoEquipment">Equipo necesario</label>
+          <input id="videoEquipment" name="equipment" type="text" placeholder="Opcional" />
+        </div>
+        <div class="field full">
+          <label for="videoDescription">Descripción</label>
+          <textarea id="videoDescription" name="description" rows="3" placeholder="Notas rápidas del ejercicio"></textarea>
+        </div>
+        <div class="field checkbox-field">
+          <input type="checkbox" id="videoPublic" name="is_public" checked />
+          <label for="videoPublic">Publicar inmediatamente</label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="cta-button"><i class="fas fa-plus"></i> Crear video</button>
+          <span class="muted" id="formStatus"></span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div id="videoModal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar modal"><i class="fas fa-times"></i></button>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">Smart<span>Trainer</span></div>
+      <p class="footer-text">Biblioteca de videos curada por ROOT para toda la comunidad fitness.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p class="copyright">© 2025 Smart Trainer. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="./js/catalogo.js"></script>
+</body>
+</html>
