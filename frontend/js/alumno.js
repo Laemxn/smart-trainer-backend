@@ -6,13 +6,13 @@ function getAccess() {
 }
 
 function redirectToLogin() {
-  window.location.href = "/frontend/auth/login.html";
+  window.location.href = "/auth/login.html";
 }
 
 function logout() {
   localStorage.removeItem("access");
   localStorage.removeItem("refresh");
-  window.location.href = "/frontend/home.html";
+  window.location.href = "/home.html";
 }
 
 async function apiGet(path) {

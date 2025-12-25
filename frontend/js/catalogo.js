@@ -104,15 +104,15 @@ function gotoDashboard(viewKey) {
   if (viewKey) {
     localStorage.setItem("alumno_view", viewKey);
   }
-  window.location.href = "/frontend/alumno/dashboard.html";
+  window.location.href = "/alumno/dashboard.html";
 }
 
 function showGuestNav() {
   buildMenu([
-    { label: "Inicio", href: "/frontend/home.html", icon: "fas fa-home" },
-    { label: "Catalogo", href: "/frontend/catalogo.html", icon: "fas fa-play-circle", active: true },
-    { label: "Comunidad", href: "/frontend/comunidad.html", icon: "fas fa-users" },
-    { label: "Login", href: "/frontend/auth/login.html", icon: "fas fa-sign-in-alt" },
+    { label: "Inicio", href: "/home.html", icon: "fas fa-home" },
+    { label: "Catalogo", href: "/catalogo.html", icon: "fas fa-play-circle", active: true },
+    { label: "Comunidad", href: "/comunidad.html", icon: "fas fa-users" },
+    { label: "Login", href: "/auth/login.html", icon: "fas fa-sign-in-alt" },
   ]);
 }
 
@@ -121,9 +121,9 @@ function showStudentNav(profile) {
     { label: `Hola, ${profile?.user || "Alumno"}`, href: "#", action: "perfil", icon: "fas fa-user" },
     { label: "Entrenamiento", href: "#", action: "rutina", icon: "fas fa-dumbbell" },
     { label: "Dieta", href: "#", action: "dieta", icon: "fas fa-utensils" },
-    { label: "Catalogo", href: "/frontend/catalogo.html", icon: "fas fa-play-circle", active: true },
+    { label: "Catalogo", href: "/catalogo.html", icon: "fas fa-play-circle", active: true },
     { label: "Progreso", href: "#", action: "progreso", icon: "fas fa-chart-line" },
-    { label: "Comunidad", href: "/frontend/comunidad.html", icon: "fas fa-users" },
+    { label: "Comunidad", href: "/comunidad.html", icon: "fas fa-users" },
     { label: "Logout", href: "#", action: "logout", icon: "fas fa-right-from-bracket" },
   ]);
 }
@@ -142,15 +142,15 @@ function gotoDashboard(viewKey) {
   if (viewKey) {
     localStorage.setItem("alumno_view", viewKey);
   }
-  window.location.href = "/frontend/alumno/dashboard.html";
+  window.location.href = "/alumno/dashboard.html";
 }
 
 function showGuestNav() {
   buildMenu([
-    { label: "Inicio", href: "/frontend/home.html", icon: "fas fa-home" },
-    { label: "Catalogo", href: "/frontend/catalogo.html", icon: "fas fa-play-circle", active: true },
-    { label: "Comunidad", href: "/frontend/comunidad.html", icon: "fas fa-users" },
-    { label: "Login", href: "/frontend/auth/login.html", icon: "fas fa-sign-in-alt" },
+    { label: "Inicio", href: "/home.html", icon: "fas fa-home" },
+    { label: "Catalogo", href: "/catalogo.html", icon: "fas fa-play-circle", active: true },
+    { label: "Comunidad", href: "/comunidad.html", icon: "fas fa-users" },
+    { label: "Login", href: "/auth/login.html", icon: "fas fa-sign-in-alt" },
   ]);
 }
 
@@ -159,9 +159,9 @@ function showStudentNav(profile) {
     { label: `Hola, ${profile?.user || "Alumno"}`, href: "#", action: "perfil", icon: "fas fa-user" },
     { label: "Entrenamiento", href: "#", action: "rutina", icon: "fas fa-dumbbell" },
     { label: "Dieta", href: "#", action: "dieta", icon: "fas fa-utensils" },
-    { label: "Catalogo", href: "/frontend/catalogo.html", icon: "fas fa-play-circle", active: true },
+    { label: "Catalogo", href: "/catalogo.html", icon: "fas fa-play-circle", active: true },
     { label: "Progreso", href: "#", action: "progreso", icon: "fas fa-chart-line" },
-    { label: "Comunidad", href: "/frontend/comunidad.html", icon: "fas fa-users" },
+    { label: "Comunidad", href: "/comunidad.html", icon: "fas fa-users" },
     { label: "Logout", href: "#", action: "logout", icon: "fas fa-right-from-bracket" },
   ]);
 }
@@ -195,7 +195,7 @@ async function loadProfile() {
     userRole = normalizedRole;
 
     if (normalizedRole === "ADMIN" || normalizedRole === "ROOT") {
-      window.location.href = "/frontend/coach/dashboard.html";
+      window.location.href = "/coach/dashboard.html";
       return;
     }
 
@@ -708,7 +708,7 @@ function bindMenuActions() {
 
     if (action === "logout") {
       clearTokens();
-      window.location.href = "/frontend/home.html";
+      window.location.href = "/home.html";
       return;
     }
     if (action === "perfil") {

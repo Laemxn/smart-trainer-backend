@@ -108,15 +108,15 @@ function gotoDashboard(viewKey) {
   if (viewKey) {
     localStorage.setItem("alumno_view", viewKey);
   }
-  window.location.href = "/frontend/alumno/dashboard.html";
+  window.location.href = "/alumno/dashboard.html";
 }
 
 function showGuestNav() {
   buildMenu([
-    { label: "Inicio", href: "/frontend/home.html", icon: "fas fa-home" },
-    { label: "Catalogo", href: "/frontend/catalogo.html", icon: "fas fa-play-circle" },
-    { label: "Comunidad", href: "/frontend/comunidad.html", icon: "fas fa-users", active: true },
-    { label: "Login", href: "/frontend/auth/login.html", icon: "fas fa-sign-in-alt" },
+    { label: "Inicio", href: "/home.html", icon: "fas fa-home" },
+    { label: "Catalogo", href: "/catalogo.html", icon: "fas fa-play-circle" },
+    { label: "Comunidad", href: "/comunidad.html", icon: "fas fa-users", active: true },
+    { label: "Login", href: "/auth/login.html", icon: "fas fa-sign-in-alt" },
   ]);
 }
 
@@ -125,9 +125,9 @@ function showStudentNav(profile) {
     { label: `Hola, ${profile?.user || "Alumno"}`, href: "#", action: "perfil", icon: "fas fa-user" },
     { label: "Entrenamiento", href: "#", action: "rutina", icon: "fas fa-dumbbell" },
     { label: "Dieta", href: "#", action: "dieta", icon: "fas fa-utensils" },
-    { label: "Catalogo", href: "/frontend/catalogo.html", icon: "fas fa-play-circle" },
+    { label: "Catalogo", href: "/catalogo.html", icon: "fas fa-play-circle" },
     { label: "Progreso", href: "#", action: "progreso", icon: "fas fa-chart-line" },
-    { label: "Comunidad", href: "/frontend/comunidad.html", icon: "fas fa-users", active: true },
+    { label: "Comunidad", href: "/comunidad.html", icon: "fas fa-users", active: true },
     { label: "Logout", href: "#", action: "logout", icon: "fas fa-right-from-bracket" },
   ]);
 }
@@ -138,7 +138,7 @@ async function fetchProfile(token) {
   });
   if (res.status === 401) {
     clearTokens();
-    window.location.href = "/frontend/auth/login.html";
+    window.location.href = "/auth/login.html";
     return null;
   }
   if (!res.ok) throw new Error("No se pudo obtener el perfil");
@@ -157,7 +157,7 @@ async function setupNavState() {
     if (!profile) return;
     const role = profile.role === "ALUMNO" ? "STUDENT" : profile.role;
     if (role === "ADMIN" || role === "ROOT") {
-      window.location.href = "/frontend/coach/dashboard.html";
+      window.location.href = "/coach/dashboard.html";
       return;
     }
     showStudentNav(profile);
@@ -181,7 +181,7 @@ function bindMenuActions() {
 
     if (action === "logout") {
       clearTokens();
-      window.location.href = "/frontend/home.html";
+      window.location.href = "/home.html";
       return;
     }
     if (action === "progreso") {

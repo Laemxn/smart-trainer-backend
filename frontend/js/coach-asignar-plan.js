@@ -9,7 +9,7 @@ function getAccess() {
 }
 
 function redirectToLogin() {
-  window.location.href = "/frontend/auth/login.html";
+  window.location.href = "/auth/login.html";
 }
 
 function getStudentId() {

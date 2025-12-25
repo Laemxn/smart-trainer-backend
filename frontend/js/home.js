@@ -42,7 +42,7 @@ function gotoDashboard(viewKey) {
   if (viewKey) {
     localStorage.setItem("alumno_view", viewKey);
   }
-  window.location.href = "/frontend/alumno/dashboard.html";
+  window.location.href = "/alumno/dashboard.html";
 }
 
 function showGuest() {
@@ -57,15 +57,15 @@ function showGuest() {
       "Smart Trainer te conecta con tu coach y tus planes personalizados de entrenamiento y nutricion.";
   if (cta) {
     cta.textContent = "Comenzar ahora";
-    cta.setAttribute("href", "/frontend/auth/login.html");
+    cta.setAttribute("href", "/auth/login.html");
     cta.onclick = null;
   }
   if (studentActions) studentActions.style.display = "none";
 
   buildMenu([
-    { label: "Login", href: "/frontend/auth/login.html", icon: "fas fa-sign-in-alt" },
-    { label: "Catalogo", href: "/frontend/catalogo.html", icon: "fas fa-store" },
-    { label: "Comunidad", href: "/frontend/comunidad.html", icon: "fas fa-users" },
+    { label: "Login", href: "/auth/login.html", icon: "fas fa-sign-in-alt" },
+    { label: "Catalogo", href: "/catalogo.html", icon: "fas fa-store" },
+    { label: "Comunidad", href: "/comunidad.html", icon: "fas fa-users" },
   ]);
 }
 
@@ -79,7 +79,7 @@ function showStudent(profile) {
   if (heroText) heroText.textContent = "Accede rapido a tu perfil, rutina y dieta.";
   if (cta) {
     cta.textContent = "Ir a mi panel";
-    cta.setAttribute("href", "/frontend/alumno/dashboard.html");
+    cta.setAttribute("href", "/alumno/dashboard.html");
     cta.onclick = (e) => {
       e.preventDefault();
       gotoDashboard("perfil");
@@ -91,9 +91,9 @@ function showStudent(profile) {
     { label: "Perfil", href: "#", action: "perfil", icon: "fas fa-user" },
     { label: "Entrenamiento", href: "#", action: "rutina", icon: "fas fa-dumbbell" },
     { label: "Dieta", href: "#", action: "dieta", icon: "fas fa-utensils" },
-    { label: "Catalogo", href: "/frontend/catalogo.html", icon: "fas fa-store" },
+    { label: "Catalogo", href: "/catalogo.html", icon: "fas fa-store" },
     { label: "Progreso", href: "#", icon: "fas fa-chart-line" },
-    { label: "Comunidad", href: "/frontend/comunidad.html", icon: "fas fa-users" },
+    { label: "Comunidad", href: "/comunidad.html", icon: "fas fa-users" },
     { label: "Logout", href: "#", action: "logout", icon: "fas fa-right-from-bracket" },
   ]);
 }
@@ -107,7 +107,7 @@ async function fetchProfile(token) {
 
   if (res.status === 401) {
     clearTokens();
-    window.location.href = "/frontend/auth/login.html";
+    window.location.href = "/auth/login.html";
     return null;
   }
 
@@ -142,7 +142,7 @@ function bindMenuActions() {
 
     if (action === "logout") {
       clearTokens();
-      window.location.href = "/frontend/home.html";
+      window.location.href = "/home.html";
       return;
     }
     if (action === "perfil") {
@@ -224,7 +224,7 @@ async function initHome() {
     if (!profile) return;
     const role = profile.role === "ALUMNO" ? "STUDENT" : profile.role;
     if (role === "ADMIN" || role === "ROOT") {
-      window.location.href = "/frontend/coach/dashboard.html";
+      window.location.href = "/coach/dashboard.html";
       return;
     }
     showStudent(profile);

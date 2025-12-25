@@ -48,10 +48,10 @@ if (loginForm) {
 
       // 3. Redireccion segun rol
       const roleRedirects = {
-        STUDENT: "/frontend/alumno/dashboard.html",
-        ALUMNO: "/frontend/alumno/dashboard.html", // compat legado
-        ADMIN: "/frontend/coach/dashboard.html",
-        ROOT: "/frontend/coach/dashboard.html",
+        STUDENT: "/alumno/dashboard.html",
+        ALUMNO: "/alumno/dashboard.html", // compat legado
+        ADMIN: "/coach/dashboard.html",
+        ROOT: "/coach/dashboard.html",
       };
 
       const nextUrl = profile.redirect || roleRedirects[profile.role];

@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
       localStorage.removeItem("access_token");
-      window.location.replace("/frontend/home.html");
+      window.location.replace("/home.html");
     });
   });
 
@@ -63,7 +63,7 @@ async function setupRootExtras() {
     if (navList && !navList.querySelector("[data-root-catalog]")) {
       const li = document.createElement("li");
       const link = document.createElement("a");
-      link.href = "/frontend/catalogo.html";
+      link.href = "/catalogo.html";
       link.setAttribute("data-root-catalog", "true");
       link.innerHTML = `<i class="fas fa-play-circle"></i> Crear ejercicios`;
       li.appendChild(link);
