@@ -1,6 +1,6 @@
 // Dynamic import to avoid module script requirement.
 (async () => {
-  const { API_BASE_URL } = await import("./config.js");
+  const { API_BASE_URL } = await import("/js/config.js");
   const API_URL = `${API_BASE_URL}/api`;
 
   const loginForm = document.getElementById("loginForm");

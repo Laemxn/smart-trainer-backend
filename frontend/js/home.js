@@ -1,6 +1,6 @@
 // Uses dynamic import for config without requiring module script tags.
 (async () => {
-  const { API_BASE_URL } = await import("./config.js");
+  const { API_BASE_URL } = await import("/js/config.js");
   const API_BASE = `${API_BASE_URL}/api`;
 
   function getAccessToken() {

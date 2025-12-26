@@ -1,6 +1,6 @@
 // Dynamic import keeps compatibility with classic script tags.
 (async () => {
-  const { API_BASE_URL } = await import("./config.js");
+  const { API_BASE_URL } = await import("/js/config.js");
   const API_BASE = `${API_BASE_URL}/api`;
 
   let catalogItems = [];

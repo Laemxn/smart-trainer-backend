@@ -1,6 +1,6 @@
 // Dynamic import to avoid module script requirement.
 (async () => {
-  const { API_BASE_URL } = await import("./config.js");
+  const { API_BASE_URL } = await import("/js/config.js");
   const API = API_BASE_URL;
   const DAY_NAMES = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
 

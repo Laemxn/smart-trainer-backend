@@ -1,6 +1,6 @@
 // Dynamic import to work with classic script tags.
 (async () => {
-  const { API_BASE_URL } = await import("./config.js");
+  const { API_BASE_URL } = await import("/js/config.js");
   const API_BASE = `${API_BASE_URL}/api`;
 
   document.addEventListener("DOMContentLoaded", () => {
