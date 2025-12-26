@@ -17,7 +17,7 @@
       throw new Error("No autenticado");
     }
 
-    const res = await fetch(`${API}/api/accounts/`, {
+    const res = await fetch(`${API}/api/accounts/admin/create/`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
