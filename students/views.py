@@ -30,7 +30,7 @@ class StudentCreateListView(generics.ListCreateAPIView):
             return Response({"detail": str(exc)}, status=400)
 
         output = StudentListSerializer(student).data
-        headers = self.get_success_headers(serializer.data)
+        headers = self.get_success_headers(output)
         return Response(output, status=201, headers=headers)
 
 from rest_framework.views import APIView

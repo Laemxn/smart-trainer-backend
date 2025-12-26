@@ -52,11 +52,11 @@
 
       try {
         await createStudent(data);
-        if (result) result.textContent = "ƒo. Alumno creado correctamente";
+        if (result) result.textContent = "Alumno creado correctamente.";
         form.reset();
       } catch (err) {
-        if (result) result.textContent = "ƒ?O Error: " + err.message;
+        if (result) result.textContent = "Error: " + err.message;
       }
     });
   }
-})();
+})();*** End Patch
