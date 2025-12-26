@@ -5,8 +5,13 @@
       const mod = await import("./config.js");
       return mod.API_BASE_URL;
     } catch (err) {
-      console.error("No se pudo cargar config.js", err);
-      return "https://smart-trainer-backend-cs9r.onrender.com";
+      try {
+        const mod = await import("/js/config.js");
+        return mod.API_BASE_URL;
+      } catch (err2) {
+        console.error("No se pudo cargar config.js", err, err2);
+        return "https://smart-trainer-backend-cs9r.onrender.com";
+      }
     }
   }
 
