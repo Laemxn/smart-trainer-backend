@@ -63,19 +63,37 @@
       if (role !== "ROOT") return;
 
       const navList = document.querySelector(".nav-menu ul");
-      if (navList && !navList.querySelector("[data-root-catalog]")) {
-        const li = document.createElement("li");
-        const link = document.createElement("a");
-        link.href = "/catalogo.html";
-        link.setAttribute("data-root-catalog", "true");
-        link.innerHTML = `<i class="fas fa-play-circle"></i> Crear ejercicios`;
-        li.appendChild(link);
+      if (navList) {
+        if (!navList.querySelector("[data-root-catalog]")) {
+          const li = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = "/catalogo.html";
+          link.setAttribute("data-root-catalog", "true");
+          link.innerHTML = `<i class="fas fa-play-circle"></i> Crear ejercicios`;
+          li.appendChild(link);
 
-        const logoutItem = navList.querySelector("[data-logout]")?.closest("li");
-        if (logoutItem) {
-          navList.insertBefore(li, logoutItem);
-        } else {
-          navList.appendChild(li);
+          const logoutItem = navList.querySelector("[data-logout]")?.closest("li");
+          if (logoutItem) {
+            navList.insertBefore(li, logoutItem);
+          } else {
+            navList.appendChild(li);
+          }
+        }
+
+        if (!navList.querySelector("[data-root-create-coach]")) {
+          const liCoach = document.createElement("li");
+          const linkCoach = document.createElement("a");
+          linkCoach.href = "/coach/crear-coach.html";
+          linkCoach.setAttribute("data-root-create-coach", "true");
+          linkCoach.innerHTML = `<i class="fas fa-user-tie"></i> Crear coach`;
+          liCoach.appendChild(linkCoach);
+
+          const logoutItem = navList.querySelector("[data-logout]")?.closest("li");
+          if (logoutItem) {
+            navList.insertBefore(liCoach, logoutItem);
+          } else {
+            navList.appendChild(liCoach);
+          }
         }
       }
 
@@ -83,6 +101,10 @@
       if (rootCard) {
         rootCard.style.display = "block";
       }
+      const rootCoachCard = document.getElementById("rootCreateCoachCard");
+      if (rootCoachCard) rootCoachCard.style.display = "block";
+      const navCreateCoach = document.getElementById("navCreateCoach");
+      if (navCreateCoach) navCreateCoach.style.display = "list-item";
     } catch (err) {
       console.error("No se pudo preparar el panel ROOT", err);
     }

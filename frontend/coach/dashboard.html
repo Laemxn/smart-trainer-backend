@@ -25,6 +25,7 @@
       <nav class="nav-menu">
         <ul>
           <li><a href="./dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+          <li id="navCreateCoach" style="display: none;"><a href="./crear-coach.html"><i class="fas fa-user-tie"></i> Crear coach</a></li>
           <li><a href="./crear-alumno.html"><i class="fas fa-user-plus"></i> Crear alumno</a></li>
           <li><a href="./alumnos.html"><i class="fas fa-users"></i> Alumnos</a></li>
           <li><a href="./editar-alumno.html"><i class="fas fa-pen"></i> Editar alumno</a></li>
@@ -72,6 +73,11 @@
     <section class="content-section">
       <h2 class="section-title">Acciones principales</h2>
       <div class="action-grid">
+        <a class="action-card" href="./crear-coach.html" id="rootCreateCoachCard" style="display: none;">
+          <i class="fas fa-user-tie"></i>
+          <h3>Crear coach</h3>
+          <p>Alta de coaches (solo ROOT).</p>
+        </a>
         <a class="action-card" href="./crear-alumno.html">
           <i class="fas fa-user-plus"></i>
           <h3>Crear alumno</h3>
