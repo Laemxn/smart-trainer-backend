@@ -1,21 +1,6 @@
-// Dynamic import to avoid module script requirement.
+// Uses config exposed as global for classic scripts.
 (async () => {
-  async function loadConfig() {
-    try {
-      const mod = await import("./config.js");
-      return mod.API_BASE_URL;
-    } catch (err) {
-      try {
-        const mod = await import("/js/config.js");
-        return mod.API_BASE_URL;
-      } catch (err2) {
-        console.error("No se pudo cargar config.js", err, err2);
-        return "https://smart-trainer-backend-cs9r.onrender.com";
-      }
-    }
-  }
-
-  const API = await loadConfig();
+  const API = window.API_BASE_URL || "https://smart-trainer-backend-cs9r.onrender.com";
   const DAY_NAMES = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
 
   let catalogExercises = [];
