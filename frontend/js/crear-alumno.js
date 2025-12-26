@@ -38,13 +38,13 @@
       const form = e.target;
 
       const data = {
-        username: form.username.value,
-        password: form.password.value,
+        username: (form.username.value || "").trim(),
+        password: (form.password.value || "").trim(),
         age: Number(form.age.value),
         height_cm: Number(form.height_cm.value),
         weight_kg: Number(form.weight_kg.value),
-        objective: form.objective.value,
-        level: form.level.value,
+        objective: (form.objective.value || "").trim(),
+        level: (form.level.value || "").trim(),
       };
 
       const result = document.getElementById("result");

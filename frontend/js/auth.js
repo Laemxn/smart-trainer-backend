@@ -15,8 +15,8 @@
 
       const usernameEl = document.getElementById("username");
       const passwordEl = document.getElementById("password");
-      const username = usernameEl ? usernameEl.value : "";
-      const password = passwordEl ? passwordEl.value : "";
+      const username = usernameEl ? usernameEl.value.trim() : "";
+      const password = passwordEl ? passwordEl.value.trim() : "";
 
       try {
         // 1. Login
@@ -29,7 +29,14 @@
         });
 
         if (!res.ok) {
-          throw new Error("Credenciales incorrectas");
+          let msg = "Credenciales incorrectas";
+          try {
+            const data = await res.json();
+            msg = data.detail || msg;
+          } catch (e) {
+            // ignore parse error
+          }
+          throw new Error(msg);
         }
 
         const tokenData = await res.json();
