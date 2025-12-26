@@ -1,6 +1,16 @@
 // Dynamic import keeps compatibility with classic script tags.
 (async () => {
-  const { API_BASE_URL } = await import("/js/config.js");
+  async function loadConfig() {
+    try {
+      const mod = await import("./config.js");
+      return mod.API_BASE_URL;
+    } catch (err) {
+      console.error("No se pudo cargar config.js", err);
+      return "https://smart-trainer-backend-cs9r.onrender.com";
+    }
+  }
+
+  const API_BASE_URL = await loadConfig();
   const API_BASE = `${API_BASE_URL}/api`;
 
   let catalogItems = [];

@@ -1,6 +1,16 @@
 // Dynamic import to avoid module script requirement.
 (async () => {
-  const { API_BASE_URL } = await import("/js/config.js");
+  async function loadConfig() {
+    try {
+      const mod = await import("./config.js");
+      return mod.API_BASE_URL;
+    } catch (err) {
+      console.error("No se pudo cargar config.js", err);
+      return "https://smart-trainer-backend-cs9r.onrender.com";
+    }
+  }
+
+  const API_BASE_URL = await loadConfig();
   const API_URL = `${API_BASE_URL}/api`;
 
   const loginForm = document.getElementById("loginForm");
