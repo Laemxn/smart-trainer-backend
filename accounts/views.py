@@ -1,8 +1,31 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework.exceptions import AuthenticationFailed
 
+from accounts.models import User
 from .permissions import IsRoot
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+  """
+  Permite login con username o email.
+  """
+  def validate(self, attrs):
+    username = attrs.get("username")
+    if username and "@" in username:
+      try:
+        user = User.objects.get(email=username)
+        attrs["username"] = user.username
+      except User.DoesNotExist:
+        raise AuthenticationFailed("No active account found with the given credentials", code="user_not_found")
+    return super().validate(attrs)
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+  serializer_class = CustomTokenObtainPairSerializer
 
 
 class RootOnlyView(APIView):
