@@ -21,6 +21,13 @@ class StudentCreateListView(generics.ListCreateAPIView):
             return StudentListSerializer
         return StudentCreateSerializer
 
+    def create(self, request, *args, **kwargs):
+        try:
+            return super().create(request, *args, **kwargs)
+        except Exception as exc:
+            # Evita 500 y devuelve el detalle del error
+            return Response({"detail": str(exc)}, status=400)
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
