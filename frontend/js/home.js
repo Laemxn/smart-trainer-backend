@@ -215,12 +215,11 @@
     bindStudentButtons();
     bindMenuActions();
     initCarousel();
+    // Pinta menú invitado por defecto; si hay sesión válida lo sobrescribe abajo.
+    showGuest();
 
     const token = getAccessToken();
-    if (!token) {
-      showGuest();
-      return;
-    }
+    if (!token) return;
 
     try {
       const profile = await fetchProfile(token);
